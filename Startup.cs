@@ -35,7 +35,7 @@ namespace PicknPay
             //creating Cart Service
             services.AddScoped<Cart>(sp => SessionCart.GetCart(sp));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            services.AddTransient<IOrderRepository, EFOrderRepository>();
             //enabling MVC
             services.AddMvc();
 

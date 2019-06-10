@@ -11,7 +11,7 @@ namespace PicknPay.Controllers
 {
     public class ProductController : Controller
     {
-        IProductRepository repository;
+        private IProductRepository repository;
 
         //pagination
         public int PageSize = 3;
