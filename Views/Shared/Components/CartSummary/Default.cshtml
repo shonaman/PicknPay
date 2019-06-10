@@ -1,11 +1,11 @@
 ﻿@model Cart
 
 <div class="">
-    @if (Model.CartProducts.Count() > 0)
+    @if (Model.CartProduct.Count() > 0)
     {
         <small class="navbar-text">
             <b>Your Trolley:</b>
-            @Model.CartProducts.Sum(x => x.Quantity) item(s)
+            @Model.CartProduct.Sum(x => x.Quantity) item(s)
             @Model.ComputeTotalValue().ToString("c")
         </small>
     }

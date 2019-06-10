@@ -42,11 +42,9 @@ namespace PicknPay
             //configuring services for sessions to store user cart session data
             //services.AddMemoryCache();
             //services.AddSession();
-            services.AddDistributedMemoryCache();
-            services.AddSession(options =>
-            {
-                options.IdleTimeout = TimeSpan.FromMinutes(3);
-            });
+            services.AddMemoryCache();
+            services.AddSession();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

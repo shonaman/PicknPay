@@ -18,18 +18,35 @@ namespace PicknPay.Controllers
             repository = repoService;
             cart = cartService;
         }
+
+        //viewing orders and marking them as shipped
+        public ViewResult List() =>
+            View(repository.Orders.Where(o => !o.Shipped));
+
+        [HttpPost]
+        public IActionResult MarkShipped(int orderID)
+        {
+            Order order = repository.Orders
+                .FirstOrDefault(o => o.OrderID == orderID);
+            if(order != null)
+            {
+                order.Shipped = true;
+                repository.SaveOrder(order);
+            }
+            return RedirectToAction(nameof(List));
+        }
         public ViewResult Checkout() => View(new Order());
 
         [HttpPost]
         public IActionResult Checkout(Order order)
         {
-            if(cart.CartProducts.Count() == 0)
+            if(cart.CartProduct.Count() == 0)
             {
                 ModelState.AddModelError("", "Sorry, your trolley is empty!");
             }
             if (ModelState.IsValid)
             {
-                order.cartProducts = cart.CartProducts.ToArray();
+                order.CartProduct = cart.CartProduct.ToArray();
                 repository.SaveOrder(order);
                 return RedirectToAction(nameof(Completed));
             }

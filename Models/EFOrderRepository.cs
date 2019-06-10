@@ -16,12 +16,12 @@ namespace PicknPay.Models
         }
 
         public IQueryable<Order> Orders => context.Orders
-            .Include(o => o.cartProducts)
+            .Include(o => o.CartProduct)
             .ThenInclude(l => l.Product);
 
         public void SaveOrder(Order order)
         {
-            context.AttachRange(order.cartProducts.Select(l => l.Product));
+            context.AttachRange(order.CartProduct.Select(l => l.Product));
             if (order.OrderID == 0)
                 context.Orders.Add(order);
             else

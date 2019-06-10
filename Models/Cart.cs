@@ -42,7 +42,7 @@ namespace PicknPay.Models
         public virtual void Clear() => productCollection.Clear();
 
         //returning items in Cart
-        public virtual IEnumerable<CartProducts> CartProducts => productCollection;
+        public virtual IEnumerable<CartProducts> CartProduct => productCollection;
     }
 
    
