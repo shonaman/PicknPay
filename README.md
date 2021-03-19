@@ -1,4 +1,4 @@
-# PicknPay
+# PicknPay - Online Shopping Cart
 Online mobile shopping asp.net core project
-# developed under step by step learning of asp.net core mvc 2.2
+# created with asp.net core mvc 2.2
 # utilizes EF 
